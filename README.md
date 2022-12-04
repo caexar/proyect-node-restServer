@@ -1,4 +1,7 @@
 #Web Server - Rest Server
 
 
-Recuerda que deben usar el ``` npm istall ``` para recostruir los modulos de node 
+``` 
+Rest server en el cual trabajamos con la base de dato MongoDB 
+en la mismas usamos las funciones [GET, POST, PUT, DELETE]
+``` 
