@@ -1,6 +1,7 @@
-const Role = require("../models/role");
-const Usuario = require("../models/usuario");
-
+//const Role = require("../models/role");
+import Role from "../models/role.js";
+//const Usuario = require("../models/usuario");
+import Usuario from "../models/usuario.js"; 
 
 const esRoleValido = async(rol = "") =>{ //el segundo parametro es el mensaje de error, el custom es para que sea un rol valido
     
@@ -25,7 +26,13 @@ const existeUsuarioPorId = async(id) => {
 }
 
 
-module.exports = {
+//module.exports = {
+//    esRoleValido,
+//    emailExiste,
+//    existeUsuarioPorId
+//}
+
+export {
     esRoleValido,
     emailExiste,
     existeUsuarioPorId

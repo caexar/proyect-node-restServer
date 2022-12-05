@@ -1,11 +1,13 @@
-const {response, request} = require('express'); // express siendo express 
-const bcrypt = require('bcryptjs'); //npm para incriptar contraseñas
+//const {response, request} = require('express'); // express siendo express 
+import {response, request} from 'express';
+//const bcrypt = require('bcryptjs'); //npm para incriptar contraseñas
+import bcrypt from 'bcryptjs'; //npm para incriptar contraseñas
 
-
-const Usuario = require('../models/usuario'); 
-
+//const Usuario = require('../models/usuario'); 
+import Usuario from "../models/usuario.js";
 
 const usuariosGet = async (req = request, res = response) => {
+    
     //const {q, nombre = "no name", apikey, page = 1, limit} = req.query;
 
     const {limite = 5, desde = 0} = req.query; //para obtener el query de la peticion y el limite por defecto es 5
@@ -40,14 +42,9 @@ const usuariosGet = async (req = request, res = response) => {
 
 const usuariosPost = async (req, res = response) => {
 
-
-
     const {nombre, correo, contraseña, rol} = req.body; //para obtener el body de la peticion
     const usuario = new Usuario({nombre, correo, contraseña, rol}); //creamos una instancia de usuario con el body de la peticion
-
-    //verificar si el correo existe
     
-
     //Encriptar contraseña
     const salt = bcrypt.genSaltSync(); //encriptamos con la funcion genSaltSync("numero de vueltas por defecto 10")
     usuario.contraseña = bcrypt.hashSync(contraseña, salt); //encriptamos la contraseña con la funcion hashSync("contraseña", "salt")
@@ -97,12 +94,20 @@ const usuariosPatch = (req, res = response) => {
 }
 
 
-module.exports = {
+/*module.exports = {
     usuariosGet,
     usuariosPut,
     usuariosPost,
     usuariosDelete,
     usuariosPatch
-};
+};*/
+
+export {
+    usuariosGet,
+    usuariosPut,
+    usuariosPost,
+    usuariosDelete,
+    usuariosPatch
+}
 
 

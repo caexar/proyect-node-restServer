@@ -1,8 +1,8 @@
 
-const { Schema, model} = require('mongoose');
+//const { Schema, model} = require('mongoose');
+import { Schema, model } from "mongoose";
 
 const UsuarioSchema = Schema({
-
     nombre: {
         type: String,
         required: [true, "el nombre es obligatorio"] //el segundo parametro es el mensaje de error
@@ -40,4 +40,5 @@ UsuarioSchema.methods.toJSON = function(){
     return usuario;
 }
 
-module.exports = model('Usuario', UsuarioSchema);
+//module.exports = model('Usuario', UsuarioSchema);
+export default model('Usuario', UsuarioSchema);

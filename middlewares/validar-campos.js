@@ -1,5 +1,5 @@
-const { validationResult} = require("express-validator"); //para validar los campos de la peticion
-
+//const { validationResult} = require("express-validator"); //para validar los campos de la peticion
+import { validationResult } from "express-validator";
 
 const validarCampos = (req, res, next) =>{
 
@@ -12,6 +12,8 @@ const validarCampos = (req, res, next) =>{
 }
 
 
-module.exports = {
-    validarCampos
-}
+//module.exports = {
+//    validarCampos
+//}
+
+export default validarCampos;

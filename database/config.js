@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 
 const dbConnection = async() => {
 
     try {
 
-        await mongoose.connect(process.env.MONGODB_CNN); //antes era nesesario confirmar parametros como este (userNewUrlParser: true ) pero en la version actual 6.+ ya no es necesario
-        
+        await mongoose.connect(process.env.MONGODB_CNN); //antes era nesesario confirmar parametros como este (userNewUrlParser: true ) pero en la version actual 6.+ ya no es necesario 
         console.log("Base de datos online");
 
         
@@ -20,6 +20,8 @@ const dbConnection = async() => {
 
 
 
-module.exports = {
-    dbConnection
-}
+//module.exports = {
+//    dbConnection
+//}
+
+export {dbConnection};

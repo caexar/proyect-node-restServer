@@ -1,6 +1,12 @@
-const express = require('express');
-const cors = require('cors');
-const { dbConnection } = require('../database/config');
+//const express = require('express');
+import express from "express";
+//const cors = require('cors');
+import cors from "cors";
+//const { dbConnection } = require('../database/config');
+import { dbConnection } from "../database/config.js";
+//import {router} from "../routes/usuarios.js";
+import usersRutas from "../routes/usuarios.js";
+//import * as usersRutas from '../routes/usuarios.js';
 
 class Server{
     
@@ -35,8 +41,10 @@ class Server{
         this.app.use(express.static('public')); //para que el servidor pueda servir archivos estaticos
     }
 
+    
     routes() {
-        this.app.use( this.usuariosPatch, require('../routes/usuarios')); //cargamos la ruta de usuarios
+        //************ error en la ruta */
+        this.app.use( this.usuariosPatch, usersRutas );// inquire("../routes/usuarios") //cargamos la ruta de usuarios
     }
     
 
@@ -47,4 +55,5 @@ class Server{
     }
 }
 
-module.exports = Server;
+//module.exports = Server;
+export default Server;

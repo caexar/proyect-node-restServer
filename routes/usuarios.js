@@ -1,15 +1,24 @@
-const { Router } = require('express');
-const { check } = require('express-validator');
-
-const { usuariosGet, 
+//const { Router } = require('express');
+import { Router } from 'express';
+//const { check } = require('express-validator');
+import { check } from 'express-validator';
+/*const { usuariosGet, 
         usuariosDelete, 
         usuariosPost, 
         usuariosPut, 
-        usuariosPatch } = require('../controllers/usuarios');
+        usuariosPatch } = require('../controllers/usuarios');*/
+import {usuariosGet,
+        usuariosPost,
+        usuariosDelete,
+        usuariosPut,
+        usuariosPatch } from '../controllers/usuarios';
 
-const { esRoleValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-validators');
-const { validarCampos } = require('../middlewares/validar-campos');
-const role = require('../models/role');
+//const { esRoleValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-validators');
+import { esRoleValido, emailExiste, existeUsuarioPorId } from '../helpers/db-validators';
+//const { validarCampos } = require('../middlewares/validar-campos');
+import { validarCampos } from '../middlewares/validar-campos';
+//const role = require('../models/role');
+import role from '../models/role.js';
 
 const router = Router();
 
@@ -40,4 +49,5 @@ router.delete('/:id',[
 
 router.patch('/', usuariosPatch);
 
-module.exports = router;
+//module.exports = router;
+export default router;
