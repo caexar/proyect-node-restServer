@@ -1,10 +1,7 @@
-//const {response, request} = require('express'); // express siendo express 
-import {response, request} from 'express';
-//const bcrypt = require('bcryptjs'); //npm para incriptar contraseñas
-import bcrypt from 'bcryptjs'; //npm para incriptar contraseñas
+const {response, request} = require('express'); // express siendo express 
+const bcrypt = require('bcryptjs'); //npm para incriptar contraseñas
 
-//const Usuario = require('../models/usuario'); 
-import Usuario from "../models/usuario.js";
+const Usuario = require('../models/usuario'); 
 
 const usuariosGet = async (req = request, res = response) => {
     
@@ -81,10 +78,10 @@ const usuariosDelete = async (req, res = response) => {
 
     //cambiamos el estado a false para que no se muestre en la base de datos
     const usuario = await Usuario.findByIdAndUpdate(id, {estado: false});
+    
+    //const usuarioAutenticado = req.usuario;//obtenemos el usuario autenticado del middleware validar-jwt
 
-    res.json({
-        usuario
-    });
+    res.json(usuario);
 }
 
 const usuariosPatch = (req, res = response) => {
@@ -94,20 +91,14 @@ const usuariosPatch = (req, res = response) => {
 }
 
 
-/*module.exports = {
-    usuariosGet,
-    usuariosPut,
-    usuariosPost,
-    usuariosDelete,
-    usuariosPatch
-};*/
-
-export {
+module.exports = {
     usuariosGet,
     usuariosPut,
     usuariosPost,
     usuariosDelete,
     usuariosPatch
 }
+
+
 
 

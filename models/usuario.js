@@ -1,6 +1,5 @@
 
-//const { Schema, model} = require('mongoose');
-import { Schema, model } from "mongoose";
+const { Schema, model} = require('mongoose');
 
 const UsuarioSchema = Schema({
     nombre: {
@@ -36,9 +35,9 @@ const UsuarioSchema = Schema({
 });
 
 UsuarioSchema.methods.toJSON = function(){
-    const { __v, contraseña, ...usuario } = this.toObject();
+    const { __v, contraseña, _id, ...usuario } = this.toObject(); //extraemos las propiedades que no queremos que se muestren
+    usuario.uid = _id;  //cambiamos el nombre de la propiedad _id a uid
     return usuario;
 }
 
-//module.exports = model('Usuario', UsuarioSchema);
-export default model('Usuario', UsuarioSchema);
+module.exports = model('Usuario', UsuarioSchema);

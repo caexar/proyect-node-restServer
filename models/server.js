@@ -1,19 +1,15 @@
-//const express = require('express');
-import express from "express";
-//const cors = require('cors');
-import cors from "cors";
-//const { dbConnection } = require('../database/config');
-import { dbConnection } from "../database/config.js";
-//import {router} from "../routes/usuarios.js";
-import usersRutas from "../routes/usuarios.js";
-//import * as usersRutas from '../routes/usuarios.js';
+const express = require('express');
+const cors = require('cors');
+const { dbConnection } = require('../database/config');
 
 class Server{
     
     constructor(){
         this.app = express(); //inicializamos express
         this.port = process.env.PORT; //puerto de la aplicacion
+        
         this.usuariosPatch = '/api/usuarios'; //ruta de usuarios
+        this.authPatch     = '/api/auth';
         
         
         this.app.use(express.json()); //para que el servidor pueda entender los json 
@@ -43,8 +39,8 @@ class Server{
 
     
     routes() {
-        //************ error en la ruta */
-        this.app.use( this.usuariosPatch, usersRutas );// inquire("../routes/usuarios") //cargamos la ruta de usuarios
+        this.app.use( this.authPatch, require('../routes/auth'));
+        this.app.use( this.usuariosPatch, require('../routes/usuarios')); //cargamos la ruta de usuarios
     }
     
 
@@ -55,5 +51,4 @@ class Server{
     }
 }
 
-//module.exports = Server;
-export default Server;
+module.exports = Server;
